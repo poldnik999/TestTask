@@ -50,13 +50,9 @@ namespace TestTask
         }
 
         // Выводит ошибки, связанные с файлом orders
-        public static void OrderError(List<string> exMessages, string exOrder)
+        public static void OrderError(string exMessages, string exOrder)
         {
             LogWriter("\t * Обнаружены ошибки в файле orders: ");
-            foreach(string ex in exMessages)
-            {
-                LogWriter("\t --- " + ex);
-            }
             LogWriter("\t\t Некорректная строка : " + exOrder);
         }
         // Выводит ошибки, связанные с файлом orders

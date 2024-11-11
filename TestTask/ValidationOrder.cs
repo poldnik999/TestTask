@@ -12,7 +12,7 @@ namespace TestTask
         private static string exDuplID;
 
         // Доступный метод для проверки данных заказа
-        public static List<string> Validate(Order order)
+        public static void Validate(Order order)
         {
             var errors = new List<string>();
 
@@ -20,7 +20,10 @@ namespace TestTask
             ValidateWeight(order.Weight, errors);
             ValidateDistrict(order.District, errors);
             ValidateDeliveryTime(order.DeliveryTime, errors);
-            return errors;
+            if (errors.Count > 0)
+            {
+                throw new DeliveryException(string.Join("\t --- ", errors));
+            }
         }
         // Доступный метод, возвращающий заказы с дублирующим ID
         public static List<Order> Validate(List<Order> orders)
